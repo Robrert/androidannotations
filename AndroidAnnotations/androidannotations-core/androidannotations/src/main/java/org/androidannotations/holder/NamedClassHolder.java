@@ -1,11 +1,11 @@
 package org.androidannotations.holder;
 
-import org.androidannotations.AndroidAnnotationsEnvironment;
-import org.androidannotations.annotations.Name;
+import static org.androidannotations.helper.ModelConstants.classSuffix;
 
 import javax.lang.model.element.TypeElement;
 
-import static org.androidannotations.helper.ModelConstants.classSuffix;
+import org.androidannotations.AndroidAnnotationsEnvironment;
+import org.androidannotations.annotations.Name;
 
 
 public class NamedClassHolder extends BaseGeneratedClassHolder {
@@ -19,7 +19,7 @@ public class NamedClassHolder extends BaseGeneratedClassHolder {
 	 */
 	@Override
 	protected String provideClassName() {
-		if(annotatedElement.getAnnotation(Name.class) != null) {
+		if (annotatedElement.getAnnotation(Name.class) != null) {
 			if (annotatedElement.getNestingKind().isNested()) {
 				return provideSimpleName();
 			} else {

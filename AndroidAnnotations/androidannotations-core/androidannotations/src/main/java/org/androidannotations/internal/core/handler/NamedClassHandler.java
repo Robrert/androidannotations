@@ -1,21 +1,17 @@
 package org.androidannotations.internal.core.handler;
 
-import com.helger.jcodemodel.JDefinedClass;
+import javax.lang.model.SourceVersion;
+import javax.lang.model.element.Element;
+
 import org.androidannotations.AndroidAnnotationsEnvironment;
 import org.androidannotations.ElementValidation;
 import org.androidannotations.annotations.Name;
 import org.androidannotations.handler.BaseAnnotationHandler;
 import org.androidannotations.holder.BaseGeneratedClassHolder;
 
-import javax.lang.model.SourceVersion;
-import javax.lang.model.element.Element;
-import javax.lang.model.element.TypeElement;
 
-/**
- * Created by Robert on 31.12.2016.
- */
-public class ClassNameHandler extends BaseAnnotationHandler<BaseGeneratedClassHolder> {
-	public ClassNameHandler(AndroidAnnotationsEnvironment environment) {
+public class NamedClassHandler extends BaseAnnotationHandler<BaseGeneratedClassHolder> {
+	public NamedClassHandler(AndroidAnnotationsEnvironment environment) {
 		super(Name.class, environment);
 	}
 
@@ -26,7 +22,7 @@ public class ClassNameHandler extends BaseAnnotationHandler<BaseGeneratedClassHo
 
 	@Override
 	protected void validate(Element element, ElementValidation validation) {
-		if(element.getAnnotation(Name.class) != null) {
+		if (element.getAnnotation(Name.class) != null) {
 			validateCustomName(element, validation);
 		}
 	}

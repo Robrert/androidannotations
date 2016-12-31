@@ -71,6 +71,7 @@ import org.androidannotations.internal.core.handler.KeyLongPressHandler;
 import org.androidannotations.internal.core.handler.KeyMultipleHandler;
 import org.androidannotations.internal.core.handler.KeyUpHandler;
 import org.androidannotations.internal.core.handler.LongClickHandler;
+import org.androidannotations.internal.core.handler.NamedClassHandler;
 import org.androidannotations.internal.core.handler.NonConfigurationInstanceHandler;
 import org.androidannotations.internal.core.handler.OnActivityResultHandler;
 import org.androidannotations.internal.core.handler.OptionsItemHandler;
@@ -218,7 +219,7 @@ public class CorePlugin extends AndroidAnnotationsPlugin {
 		annotationHandlers.add(new AfterPreferencesHandler(androidAnnotationEnv));
 
 		annotationHandlers.add(new TraceHandler(androidAnnotationEnv));
-		annotationHandlers.add(new ClassNameHandler(androidAnnotationEnv));
+		annotationHandlers.add(new NamedClassHandler(androidAnnotationEnv));
 
 		/*
 		 * WakeLockHandler must be after TraceHandler but before UiThreadHandler
