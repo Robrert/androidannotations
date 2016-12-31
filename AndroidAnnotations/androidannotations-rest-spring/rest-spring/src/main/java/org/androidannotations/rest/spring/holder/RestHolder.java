@@ -31,6 +31,7 @@ import javax.lang.model.type.TypeKind;
 
 import org.androidannotations.AndroidAnnotationsEnvironment;
 import org.androidannotations.holder.BaseGeneratedClassHolder;
+import org.androidannotations.holder.NamedClassHolder;
 import org.androidannotations.rest.spring.api.RestErrorHandler;
 
 import com.helger.jcodemodel.AbstractJClass;
@@ -44,7 +45,7 @@ import com.helger.jcodemodel.JMethod;
 import com.helger.jcodemodel.JMod;
 import com.helger.jcodemodel.JVar;
 
-public class RestHolder extends BaseGeneratedClassHolder {
+public class RestHolder extends NamedClassHolder {
 
 	private JMethod init;
 	private JVar initContextParam;

@@ -52,7 +52,7 @@ import com.helger.jcodemodel.JMethod;
 import com.helger.jcodemodel.JMod;
 import com.helger.jcodemodel.JVar;
 
-public class SharedPrefHolder extends BaseGeneratedClassHolder {
+public class SharedPrefHolder extends NamedClassHolder {
 
 	private static class EditorFieldHolder {
 		public final Class<?> fieldClass;

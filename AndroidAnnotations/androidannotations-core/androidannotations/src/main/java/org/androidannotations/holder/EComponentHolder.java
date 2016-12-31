@@ -30,7 +30,7 @@ import com.helger.jcodemodel.JFieldVar;
 import com.helger.jcodemodel.JMethod;
 import com.helger.jcodemodel.JVar;
 
-public abstract class EComponentHolder extends BaseGeneratedClassHolder {
+public abstract class EComponentHolder extends NamedClassHolder {
 
 	protected IJExpression contextRef;
 	protected JMethod init;

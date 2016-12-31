@@ -60,25 +60,26 @@ public abstract class BaseGeneratedClassHolder implements GeneratedClassHolder {
 	}
 
 	protected void setGeneratedClass() throws Exception {
-		String annotatedComponentQualifiedName = annotatedElement.getQualifiedName().toString();
 		annotatedClass = getCodeModel().directClass(annotatedElement.asType().toString());
+
+		String className = provideClassName();
 
 		if (annotatedElement.getNestingKind().isNested()) {
 			Element enclosingElement = annotatedElement.getEnclosingElement();
 			GeneratedClassHolder enclosingHolder = environment.getGeneratedClassHolder(enclosingElement);
-			String generatedBeanSimpleName = annotatedElement.getSimpleName().toString() + classSuffix();
+
 			int modifier = PUBLIC | STATIC;
 			if (environment.getOptionBooleanValue(OPTION_GENERATE_FINAL_CLASSES)) {
 				modifier |= FINAL;
 			}
-			generatedClass = enclosingHolder.getGeneratedClass()._class(modifier, generatedBeanSimpleName, EClassType.CLASS);
+			generatedClass = enclosingHolder.getGeneratedClass()._class(modifier, className, EClassType.CLASS);
 		} else {
-			String generatedClassQualifiedName = annotatedComponentQualifiedName + classSuffix();
+
 			int modifier = PUBLIC;
 			if (environment.getOptionBooleanValue(OPTION_GENERATE_FINAL_CLASSES)) {
 				modifier |= FINAL;
 			}
-			generatedClass = getCodeModel()._class(modifier, generatedClassQualifiedName, EClassType.CLASS);
+			generatedClass = getCodeModel()._class(modifier, className, EClassType.CLASS);
 		}
 		codeModelHelper.generify(generatedClass, annotatedElement);
 		setExtends();
@@ -92,6 +93,14 @@ public abstract class BaseGeneratedClassHolder implements GeneratedClassHolder {
 	protected void setExtends() {
 		AbstractJClass annotatedComponent = getCodeModel().directClass(annotatedElement.asType().toString());
 		generatedClass._extends(annotatedComponent);
+	}
+
+	protected String provideClassName() {
+		if (annotatedElement.getNestingKind().isNested()) {
+			return annotatedElement.getSimpleName().toString() + classSuffix();
+		} else {
+			return annotatedElement.getQualifiedName().toString() + classSuffix();
+		}
 	}
 
 	@Override
